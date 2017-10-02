@@ -22,7 +22,7 @@ export default class MapExample extends Component {
     };
   }
   async fetchData() {
-    const response = await fetch("http:127.0.0.1:8080/around")
+    const response = await fetch("http://35.187.78.219/around")
     const resp = await response.json()
 
     var elements = resp.map(function(e) {
@@ -74,7 +74,6 @@ export default class MapExample extends Component {
     navigator.geolocation.clearWatch(this.watchId);
   }
   render() {
-    console.log(this.state.markers)
     return (
       <MapView
         provider={ PROVIDER_GOOGLE }
@@ -92,7 +91,7 @@ export default class MapExample extends Component {
             <MapView.Marker
               coordinate={ marker.latlng}
               title={marker.meta.name}
-              description={"YAPS"}
+              description={marker.meta.carType}
               key={marker.id}
             />
         ))}
